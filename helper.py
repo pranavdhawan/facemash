@@ -1,20 +1,25 @@
-#Helper functions we don't want in main file to keep it clean.
-
-#function to get followers
 import instaloader
 from instaloader import Profile
-def followers_list(username):
+import csv
+
+#function puts the username, and dp url of the followers in a csv file for a provided account
+
+def main(username):
     L = instaloader.Instaloader()
     L.login("pranavdhawan4", "itsanewpassword")
-
+    c= 1
     profile = Profile.from_username(L.context, username)
-    print(f"{username} is followed by these profiles: ")
-    for follower in profile.get_followers():
-        print(follower.username)
 
-def get_dp_url(username):
-    L = instaloader.Instaloader()
-    L.login("pranavdhawan4", "itsanewpassword")
+    with open('followers_list.csv', mode='w') as followers_file:
+        followers_writer = csv.writer(followers_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-    profile = Profile.from_username(L.context, username)
-    print(profile.profile_pic_url)
+        print("Writing data in csv file..\n")
+        for follower in profile.get_followers():
+            followers_writer.writerow([c, follower.username, follower.profile_pic_url])
+            c += 1
+    
+    print('Alright, done.')
+
+if __name__ == '__main__':
+    username = input("daal be")
+    main(username)
