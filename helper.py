@@ -6,7 +6,7 @@ import csv
 
 def main(username):
     L = instaloader.Instaloader()
-    L.login("pranavdhawan4", "itsanewpassword")
+    L.login("batman5honeysingh", "applemango")
     c= 1
     profile = Profile.from_username(L.context, username)
 
