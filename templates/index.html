@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <center>
-        <h1> Click on the person who's hotter. </h1>
-    </center>
-    <br> <br> <br> <br>
-    <center>
-        <a href=""> Ratings </a>
-    </center>
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/layout.css') }}">
+<title>Facemash - Who's Hotter? VIT Version</title>
+{% endblock %}
+
+{% block body %}
+<center class = "container">
+    <h2>
+        Who's hotter? Click to make a choice.
+    </h2>
+
+    <table>
+        <tr>
+            <td>
+                <img id = "img_1" src = "{{image_1_url}}">
+            </td>
+            <td>OR</td>
+            <td>
+                <img id = "img_1" src="{{image_2_url}}">
+            </td>
+        </tr>
+    </table>
+</center>
+{% endblock %}
