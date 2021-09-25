@@ -16,10 +16,12 @@ def main(username):
         print("Writing data in csv file..\n")
         for follower in profile.get_followers():
             followers_writer.writerow([c, follower.username, follower.profile_pic_url])
+
+            print(f"{follower.username}'s data stored.")
             c += 1
     
     print('Alright, done.')
 
 if __name__ == '__main__':
-    username = input("daal be")
+    username = input("Enter username: ")
     main(username)
