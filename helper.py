@@ -15,10 +15,18 @@ def main(username):
 
         print("Writing data in csv file..\n")
         for follower in profile.get_followers():
-            followers_writer.writerow([c, follower.username, follower.profile_pic_url])
+            #if c > :
+            try:
+                followers_writer.writerow([c, follower.username, follower.profile_pic_url])
 
-            print(f"{follower.username}'s data stored.")
+                print(f"{follower.username}'s data stored.")
+            except:
+                print(f"{follower.username}'s data wasn't stored :(\n\nc={c}")
             c += 1
+
+            #READ THIS:
+            #if the program stops at any time due to any error, uncomment line 18 and place the number printed in the console.
+            #Also, indent the next lines so the program works. Keep c+=1 out of the if loop.
     
     print('Alright, done.')
 
